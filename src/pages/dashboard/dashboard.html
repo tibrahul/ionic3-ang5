@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-navbar hideBackButton> 
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Home Page</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <ion-card class="accordion" *ngFor="let list of allList; let i = index">
+    <ion-card-content id="first">
+      <p style="font-size: 22px;">{{list.reportname}}</p>
+      <div class="row" style="border-bottom:0px">
+        <div class="col" style="font-size: 25px"></div>
+        <div class="col" style="padding-top: 20px">
+          <hr>
+        </div>
+        <div class="col" (click)="openChart(list.reportname)" style="text-align: right;font-size: 25px">GO ></div>
+      </div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
