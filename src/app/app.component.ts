@@ -55,7 +55,7 @@ export class MyApp {
 				{
 					iconName: 'basket',
 					displayName: 'Dashnboard',
-					component: HomePage
+					component: DashboardPage
 				}
 			]
     });
@@ -84,9 +84,7 @@ export class MyApp {
 		this.options.push({
 					iconName: 'log-out',
 					displayName: 'Logout',
-					custom: {
-						isLogout: true
-					}
+					component: HomePage
 		});
 	}
 
