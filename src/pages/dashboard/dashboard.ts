@@ -28,6 +28,7 @@ export class DashboardPage implements OnInit {
   }
 
   openChart(rpname){
+    console.log("name--------------->",rpname)
     this.navCtrl.push(ChartPage, {
       item: rpname
     })

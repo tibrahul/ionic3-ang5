@@ -60,7 +60,7 @@ export class MyApp {
 			]
     });
     
-    this.options.push({
+ /*   this.options.push({
 			displayName: 'Analytics',
 			subItems: [
 				{
@@ -79,7 +79,7 @@ export class MyApp {
 					component: HomePage
 				}
 			]
-		});
+		});*/
 
 		this.options.push({
 					iconName: 'log-out',
