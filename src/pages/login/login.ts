@@ -8,6 +8,7 @@ import {
   transition,
   keyframes
 } from '@angular/animations';
+import { LoginService } from '../../shared';
 import { DashboardPage } from '../dashboard/dashboard';
 
 @Component({
@@ -70,8 +71,11 @@ export class LoginPage {
   cloudState: any = "in";
   loginState: any = "in";
   formState: any = "in";
+
+  public username: String = "";
+  public password: String = "";
  
-  constructor(private menu: MenuController, public navCtrl: NavController) {
+  constructor(private menu: MenuController, public navCtrl: NavController, public loginService: LoginService) {
  
   }
 
@@ -80,7 +84,14 @@ export class LoginPage {
   }
 
   afterlogin() {
-    console.log("--------------")
-    this.navCtrl.push(DashboardPage);
+    var data = {
+      "username": this.username,
+      "password": this.password
+    }
+
+    this.loginService.login(data).subscribe((data) => {
+      console.log("------>>> ", data)
+      this.navCtrl.push(DashboardPage);
+    });
   }
 }

@@ -23,6 +23,15 @@ export class DashboardPage implements OnInit {
 
   ngOnInit(): void {
     this.dashboardService.get_all_Lists().subscribe((data) => {
+      data = [{
+        "reportname": "customer_product"
+      },
+      {
+        "reportname": "Warehouse_Comparision"
+      },
+      {
+        "reportname": "Forcastvsorders"
+      }]
       this.allList = data
     });
   }

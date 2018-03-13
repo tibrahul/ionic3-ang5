@@ -6,7 +6,7 @@ import { MaterialModule } from './material.module';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 
-import { ApiService, DashboardService } from '../shared';
+import { ApiService, DashboardService, LoginService } from '../shared';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -52,6 +52,7 @@ import { SharedService } from '../shared.service';
     SplashScreen,
     ApiService,
     DashboardService,
+    LoginService,
     SharedService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
