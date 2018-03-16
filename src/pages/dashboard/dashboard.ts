@@ -22,8 +22,8 @@ export class DashboardPage implements OnInit {
   }
 
   ngOnInit(): void {
-    this.dashboardService.get_all_Lists().subscribe((data) => {
-      data = [{
+    // this.dashboardService.get_all_Lists().subscribe((data) => {
+      var data = [{
         "reportname": "customer_product"
       },
       {
@@ -33,7 +33,7 @@ export class DashboardPage implements OnInit {
         "reportname": "Forcastvsorders"
       }]
       this.allList = data
-    });
+    // });
   }
 
   openChart(rpname){

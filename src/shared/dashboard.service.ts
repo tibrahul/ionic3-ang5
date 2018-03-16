@@ -9,7 +9,7 @@ export class DashboardService {
     constructor(private apiService: ApiService, private SharedService:SharedService) { }
 
     get_all_Lists(): Observable<any> {
-        return this.apiService.get(this.SharedService.baseUrl+`/api/Jsreport/getreport/admin`);
+        return this.apiService.get(this.SharedService.baseUrl+`/api/report/getall`);
     }
 
     // create_List(list: any): Observable<any> {

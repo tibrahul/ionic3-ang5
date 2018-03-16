@@ -88,10 +88,12 @@ export class LoginPage {
       "username": this.username,
       "password": this.password
     }
-
+    // if(data.username !== "" && data.password !== "")
     this.loginService.login(data).subscribe((data) => {
       console.log("------>>> ", data)
-      this.navCtrl.push(DashboardPage);
+      if(data.user.length > 0) {
+        this.navCtrl.push(DashboardPage);       
+      }
     });
   }
 }
