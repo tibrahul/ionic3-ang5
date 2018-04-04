@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Ticket Details</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <ion-card class="accordion">
+    <ion-card-content style="background: blueviolet" id="first">
+      <ion-badge style="float: right" color="danger">{{ticketDetails.status}}</ion-badge>
+      <p style="font-size: 22px; color: white;">{{ticketDetails.subject}}</p>
+    </ion-card-content>
+    <ion-card-content id="first">
+        <ion-row>
+            <ion-item-divider>
+                <ion-label>Description:</ion-label>>
+                <ion-content>{{ticketDetails.description}}</ion-content>
+              </ion-item-divider>
+            <ion-item>
+                Item 
+              </ion-item>
+              <ion-item>
+                  Item
+                </ion-item>
+        </ion-row>
+        <ion-row>
+            <ion-item>
+                Item
+              </ion-item>
+        </ion-row>
+        <p style="font-size: 22px; color: white;">{{ticketDetails.subject}}</p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

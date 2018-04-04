@@ -8,35 +8,37 @@ import { ListPage } from '../pages/list/list';
 import { SideMenuContentComponent } from '../pages/side-menu-content/side-menu-content.component';
 import { MenuOptionModel } from '../pages/side-menu-content/models/menu-option-model';
 import { SideMenuSettings } from '../pages/side-menu-content/models/side-menu-settings';
-import { ReplaySubject } from 'rxjs';
+// import { ReplaySubject } from 'rxjs';
 import { DashboardPage } from '../pages/dashboard/dashboard';
+import { TicketCreationPage } from '../pages/tickets/ticketcreation/ticketcreation';
+import { TicketDashboardPage } from '../pages/tickets/ticketdashboard/ticketdashboard';
 
 @Component({
-  templateUrl: 'app.html'
+	templateUrl: 'app.html'
 })
 export class MyApp {
-  @ViewChild(Nav) nav: Nav;
-  @ViewChild(SideMenuContentComponent) sideMenu: SideMenuContentComponent;
+	@ViewChild(Nav) nav: Nav;
+	@ViewChild(SideMenuContentComponent) sideMenu: SideMenuContentComponent;
 
-  rootPage: any = HomePage;
+	rootPage: any = HomePage;
 
-  public options: Array<MenuOptionModel>;
+	public options: Array<MenuOptionModel>;
 
-  constructor(private menuCtrl: MenuController, private alertCtrl: AlertController, public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
-    this.initializeApp();
-  }
+	constructor(private menuCtrl: MenuController, private alertCtrl: AlertController, public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+		this.initializeApp();
+	}
 
-  initializeApp() {
-    this.platform.ready().then(() => {
+	initializeApp() {
+		this.platform.ready().then(() => {
 
-      this.statusBar.styleLightContent();
-      this.splashScreen.hide();
-      this.initializeOptions();
+			this.statusBar.styleLightContent();
+			this.splashScreen.hide();
+			this.initializeOptions();
 
-    });
-  }
+		});
+	}
 
-  private initializeOptions(): void {
+	private initializeOptions(): void {
 		this.options = new Array<MenuOptionModel>();
 
 		// Load simple menu options
@@ -44,8 +46,8 @@ export class MyApp {
 		this.options.push({
 			iconName: 'home',
 			displayName: 'Home',
-      component: DashboardPage,
-      
+			component: DashboardPage,
+
 			selected: true
 		});
 
@@ -58,37 +60,53 @@ export class MyApp {
 					component: DashboardPage
 				}
 			]
-    });
-    
- /*   this.options.push({
-			displayName: 'Analytics',
+		});
+
+		this.options.push({
+			displayName: 'Tickets',
 			subItems: [
 				{
 					iconName: 'basket',
-					displayName: 'Administrator',
-					component: HomePage
+					displayName: 'Dashnboard',
+					component: TicketDashboardPage
 				},
 				{
-					iconName: 'bookmark',
-					displayName: 'User Assignment',
-					component: HomePage
-				},
-				{
-					iconName: 'bookmark',
-					displayName: 'View Reports',
-					component: HomePage
+					iconName: 'basket',
+					displayName: 'Create Ticket',
+					component: TicketCreationPage
 				}
 			]
-		});*/
+		});
+
+		/*   this.options.push({
+				   displayName: 'Analytics',
+				   subItems: [
+					   {
+						   iconName: 'basket',
+						   displayName: 'Administrator',
+						   component: HomePage
+					   },
+					   {
+						   iconName: 'bookmark',
+						   displayName: 'User Assignment',
+						   component: HomePage
+					   },
+					   {
+						   iconName: 'bookmark',
+						   displayName: 'View Reports',
+						   component: HomePage
+					   }
+				   ]
+			   });*/
 
 		this.options.push({
-					iconName: 'log-out',
-					displayName: 'Logout',
-					component: HomePage
+			iconName: 'log-out',
+			displayName: 'Logout',
+			component: HomePage
 		});
 	}
 
-  public sideMenuSettings: SideMenuSettings = {
+	public sideMenuSettings: SideMenuSettings = {
 		accordionMode: true,
 		showSelectedOption: true,
 		selectedOptionClass: 'active-side-menu-option',
@@ -99,7 +117,7 @@ export class MyApp {
 		}
 	};
 
-  
+
 	public selectOption(option: MenuOptionModel): void {
 		this.menuCtrl.close().then(() => {
 			if (option.custom && option.custom.isLogout) {

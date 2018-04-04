@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-navbar hideBackButton>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Create Ticket</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      User Information
+    </ion-card-header>
+    <ion-list>
+        <ion-item>
+          <ion-label floating>Name</ion-label>
+          <ion-input [(ngModel)]="userDetails[0].firstname" disabled="true" type="text"></ion-input>
+        </ion-item>
+      
+        <ion-item>
+          <ion-label floating>E-Mail</ion-label>
+          <ion-input [(ngModel)]="userDetails[0].email" disabled="true" type="email"></ion-input>
+        </ion-item>
+      </ion-list>
+  </ion-card>
+
+  <ion-card>
+      <ion-card-header>
+        Ticket Information
+      </ion-card-header>
+  
+      <ion-list>
+            <ion-item>
+              <ion-label floating>Ticket Subject</ion-label>
+              <ion-input [(ngModel)]="ticket.subject" type="text"></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>Severity</ion-label>
+              <ion-select [(ngModel)]="ticket.severity">
+                <ion-option value="critical">Critical</ion-option>
+                <ion-option value="major">Major</ion-option>
+                <ion-option value="minor">Minor</ion-option>
+                <ion-option value="trivial">Trivial</ion-option>
+              </ion-select>
+            </ion-item>
+
+            <ion-item>
+                <ion-label>Ticket Description</ion-label>
+              </ion-item>
+
+              <ck-editor name="editor1" [(ngModel)]="ticket.description" skin="moono-lisa" language="en" [fullPage]="false"></ck-editor>
+      </ion-list>
+  </ion-card>
+
+  <button ion-button color="blue" (click)="createTicket()" block>Create Ticket</button>
+  <button ion-button color="danger" clear block>Cancel</button>
+</ion-content>

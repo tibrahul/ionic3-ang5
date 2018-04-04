@@ -91,6 +91,7 @@ export class LoginPage {
     // if(data.username !== "" && data.password !== "")
     this.loginService.login(data).subscribe((data) => {
       console.log("------>>> ", data)
+      localStorage.setItem('currentuser', JSON.stringify(data))
       if(data.user.length > 0) {
         this.navCtrl.push(DashboardPage);       
       }

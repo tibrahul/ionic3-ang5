@@ -5,8 +5,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
-
-import { ApiService, DashboardService, LoginService } from '../shared';
+import { CKEditorModule } from 'ngx-ckeditor';
+import { ApiService, DashboardService, LoginService, TicketCreationService } from '../shared';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -15,6 +15,9 @@ import { LoginPage } from '../pages/login/login';
 import { DashboardPage } from '../pages/dashboard/dashboard';
 import { ChartPage } from '../pages/chart/chart';
 import { SideMenuContentComponent } from '../pages/side-menu-content/side-menu-content.component';
+import { TicketCreationPage } from '../pages/tickets/ticketcreation/ticketcreation';
+import { TicketDashboardPage } from '../pages/tickets/ticketdashboard/ticketdashboard';
+import { TicketDetailsPage } from '../pages/tickets/ticketdetails/ticketdetails';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -28,10 +31,14 @@ import { SharedService } from '../shared.service';
     LoginPage,
     DashboardPage,
     ChartPage,
-    SideMenuContentComponent
+    SideMenuContentComponent,
+    TicketCreationPage,
+    TicketDashboardPage,
+    TicketDetailsPage
   ],
   imports: [
     BrowserModule,
+    CKEditorModule,
     HttpModule,
     HttpClientModule,
     IonicModule.forRoot(MyApp),
@@ -45,7 +52,10 @@ import { SharedService } from '../shared.service';
     ListPage,
     LoginPage,
     ChartPage,
-    DashboardPage
+    DashboardPage,
+    TicketCreationPage,
+    TicketDashboardPage,
+    TicketDetailsPage
   ],
   providers: [
     StatusBar,
@@ -53,6 +63,7 @@ import { SharedService } from '../shared.service';
     ApiService,
     DashboardService,
     LoginService,
+    TicketCreationService,
     SharedService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
