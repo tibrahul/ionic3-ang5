@@ -13,24 +13,48 @@
       <p style="font-size: 22px; color: white;">{{ticketDetails.subject}}</p>
     </ion-card-content>
     <ion-card-content id="first">
+      <ion-item-divider text-wrap>
         <ion-row>
-            <ion-item-divider>
-                <ion-label>Description:</ion-label>>
-                <ion-content>{{ticketDetails.description}}</ion-content>
-              </ion-item-divider>
-            <ion-item>
-                Item 
-              </ion-item>
-              <ion-item>
-                  Item
-                </ion-item>
+          <ion-col>Description:</ion-col>
+          <ion-col>{{ticketDetails.description}}</ion-col>
         </ion-row>
+      </ion-item-divider>
+      <ion-item-divider text-wrap>
         <ion-row>
-            <ion-item>
-                Item
-              </ion-item>
+          <ion-col>priority:</ion-col>
+          <ion-col>{{ticketDetails.priority}}</ion-col>
         </ion-row>
-        <p style="font-size: 22px; color: white;">{{ticketDetails.subject}}</p>
+      </ion-item-divider>
+      <ion-item-divider text-wrap>
+        <ion-row>
+          <ion-col>Owmer:</ion-col>
+          <ion-col>{{ticketDetails.ownerfk}}</ion-col>
+        </ion-row>
+      </ion-item-divider>
+      <ion-item-divider text-wrap>
+        <ion-row>
+          <ion-col>Severity:</ion-col>
+          <ion-col>{{ticketDetails.severity}}</ion-col>
+        </ion-row>
+      </ion-item-divider>
+      <ion-item-divider text-wrap>
+        <ion-row>
+          <ion-col>Created On:</ion-col>
+          <ion-col>{{ticketDetails.timeofcreation | date: 'dd/MM/yyyy'}}</ion-col>
+        </ion-row>
+      </ion-item-divider>
+      <ion-item-divider text-wrap>
+        <ion-row>
+          <ion-col>Assigned To:</ion-col>
+          <ion-col>{{ticketDetails.assigntofk}}</ion-col>
+        </ion-row>
+      </ion-item-divider>
+      <ion-item-divider text-wrap>
+        <ion-row>
+          <ion-col>Assigned On:</ion-col>
+          <ion-col>{{ticketDetails.timeofassign | date: 'dd/MM/yyyy'}}</ion-col>
+        </ion-row>
+      </ion-item-divider>
     </ion-card-content>
   </ion-card>
 </ion-content>
