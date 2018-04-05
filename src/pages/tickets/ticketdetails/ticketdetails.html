@@ -8,7 +8,7 @@
 </ion-header>
 <ion-content>
   <ion-card class="accordion">
-    <ion-card-content style="background: blueviolet" id="first">
+    <ion-card-content style="background: blue" id="first">
       <ion-badge style="float: right" color="danger">{{ticketDetails.status}}</ion-badge>
       <p style="font-size: 22px; color: white;">{{ticketDetails.subject}}</p>
     </ion-card-content>
@@ -16,19 +16,23 @@
       <ion-item-divider text-wrap>
         <ion-row>
           <ion-col style="font-weight: bold">Description:</ion-col>
-          <ion-col>{{ticketDetails.description}}</ion-col>
+          <ion-col>
+            <span [innerHTML]= "ticketDetails.description"></span>
+          </ion-col>
         </ion-row>
       </ion-item-divider>
       <ion-item-divider text-wrap>
         <ion-row>
           <ion-col style="font-weight: bold">priority:</ion-col>
-          <ion-col>{{ticketDetails.priority}}</ion-col>
+          <ion-col *ngIf="ticketDetails.priority !== ''">{{ticketDetails.priority}}</ion-col>
+          <ion-col *ngIf="ticketDetails.priority === ''">N/A</ion-col>
         </ion-row>
       </ion-item-divider>
       <ion-item-divider text-wrap>
         <ion-row>
           <ion-col style="font-weight: bold">Owner:</ion-col>
-          <ion-col>{{ticketDetails.ownerfk}}</ion-col>
+          <ion-col *ngIf="ticketDetails.owner !== null">{{ticketDetails.owner.username}}</ion-col>
+          <ion-col *ngIf="ticketDetails.owner === null">Owner Deatails not present.</ion-col>
         </ion-row>
       </ion-item-divider>
       <ion-item-divider text-wrap>
@@ -46,7 +50,8 @@
       <ion-item-divider text-wrap>
         <ion-row>
           <ion-col style="font-weight: bold">Assigned To:</ion-col>
-          <ion-col>{{ticketDetails.assigntofk}}</ion-col>
+          <ion-col *ngIf="ticketDetails.assignto !== null">{{ticketDetails.assignto.username}}</ion-col>
+          <ion-col *ngIf="ticketDetails.assignto === null">Not yet Assigned</ion-col>
         </ion-row>
       </ion-item-divider>
       <ion-item-divider text-wrap>

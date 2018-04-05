@@ -20,7 +20,17 @@ export class TicketDetailsPage {
     "timeofassign": "", 
     "UserId": null, 
     "ownerfk": null, 
-    "assigntofk": null 
+    "assigntofk": null,
+    "assignto" :{
+      "id": null,
+      "password": "",
+      "username": ""
+    },
+    "owner" :{
+      "id": null,
+      "password": "",
+      "username": ""
+    }
   };
 
   constructor(public navParams: NavParams, public navCtrl: NavController, public ticketCreationService: TicketCreationService) {
