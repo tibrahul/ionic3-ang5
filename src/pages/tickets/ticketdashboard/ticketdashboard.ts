@@ -3,6 +3,7 @@ import { NavController } from 'ionic-angular';
 import { LoginPage } from '../../../pages/login/login';
 import { TicketCreationService } from '../../../shared';
 import { TicketDetailsPage } from '../ticketdetails/ticketdetails';
+import { LoadingController } from 'ionic-angular';
 
 @Component({
   selector: 'page-ticketdashboard',
@@ -13,7 +14,9 @@ export class TicketDashboardPage {
   private allTickets : {};
   private allTicketsToFilter: {};
 
-  constructor(public navCtrl: NavController, public ticketCreationService: TicketCreationService) {
+  constructor(public navCtrl: NavController,
+     public ticketCreationService: TicketCreationService
+     ,public loadingController:LoadingController) {
     var user = JSON.parse(localStorage.getItem('currentuser')).user;
     var userRole = user[0].Authorities[0].role;
     var uid = user[0].id;
@@ -30,23 +33,32 @@ export class TicketDashboardPage {
   }
 
   getAssignedTicketByUser(uid) {
+    let loading = this.loadingController.create({content : "Getting Tickets Assigned To User"});
+    loading.present();
     this.ticketCreationService.get_assigned_ticket(uid).subscribe((data) => {
       this.allTickets = data;
       this.allTicketsToFilter = data;
+      loading.dismissAll();
     });
   }
 
   getTicketByUser(uid) {
+    let loading = this.loadingController.create({content : "Getting User's Ticket"});
+    loading.present();
     this.ticketCreationService.get_tickets_byUserID(uid).subscribe((data) => {
       this.allTickets = data;
       this.allTicketsToFilter = data;
+      loading.dismissAll();
     });
   }
 
   getAllTickets(){
+    let loading = this.loadingController.create({content : "Getting All Ticket"});
+    loading.present();
     this.ticketCreationService.get_all_tickets().subscribe((data) => {
       this.allTickets = data;
       this.allTicketsToFilter = data;
+      loading.dismissAll();
     });
   }
 
