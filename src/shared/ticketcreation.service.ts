@@ -16,8 +16,8 @@ export class TicketCreationService {
         return this.apiService.get(this.SharedService.baseUrl + `/api/ticketsystem/getalltickets`);
     }
 
-    get_tickets_byUserID(): Observable<any> {
-        return this.apiService.get(this.SharedService.baseUrl + `/api/ticketsystem/createticket`);
+    get_tickets_byUserID(uid): Observable<any> {
+        return this.apiService.get(this.SharedService.baseUrl + `/api/ticketsystem/getticketsByUserId/`+uid);
     }
 
     get_ticket_byID(id): Observable<any> {

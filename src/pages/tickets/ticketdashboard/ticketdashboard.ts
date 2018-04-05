@@ -14,7 +14,24 @@ export class TicketDashboardPage {
   private allTicketsToFilter: {};
 
   constructor(public navCtrl: NavController, public ticketCreationService: TicketCreationService) {
-    this.getAllTickets();
+    var user = JSON.parse(localStorage.getItem('currentuser')).user;
+    var userRole = user[0].Authorities[0].role;
+    var uid = user[0].id;
+    console.log("--->> uid ", uid)
+    console.log("--->> userRole ", userRole)
+
+    if(userRole === "ROLE_USER") {
+      this.getTicketByUser(uid);
+    } else {
+      this.getAllTickets();
+    }
+  }
+
+  getTicketByUser(uid) {
+    this.ticketCreationService.get_tickets_byUserID(uid).subscribe((data) => {
+      this.allTickets = data;
+      this.allTicketsToFilter = data;
+    });
   }
 
   getAllTickets(){
