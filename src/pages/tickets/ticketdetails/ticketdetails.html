@@ -57,7 +57,8 @@
       <ion-item-divider text-wrap>
         <ion-row>
           <ion-col style="font-weight: bold">Assigned On:</ion-col>
-          <ion-col>{{ticketDetails.timeofassign | date: 'dd/MM/yyyy'}}</ion-col>
+          <ion-col *ngIf="ticketDetails.timeofassign !== null">{{ticketDetails.timeofassign | date: 'dd/MM/yyyy'}}</ion-col>
+          <ion-col *ngIf="ticketDetails.timeofassign === null">N/A</ion-col>
         </ion-row>
       </ion-item-divider>
     </ion-card-content>

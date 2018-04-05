@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController, MenuController, AlertController } from 'ionic-angular';
+import { NavController, MenuController, AlertController, LoadingController } from 'ionic-angular';
 import { LoginPage } from '../../../pages/login/login';
 import { TicketCreationService } from '../../../shared';
 import { TicketDashboardPage } from '../ticketdashboard/ticketdashboard';
@@ -23,7 +23,8 @@ export class TicketCreationPage {
     private menu: MenuController, 
     private alertCtrl: AlertController, 
     public navCtrl: NavController, 
-    public ticketCreationService: TicketCreationService
+    public ticketCreationService: TicketCreationService,
+    public loadingController:LoadingController
   ) {
     this.userDetails = JSON.parse(localStorage.getItem('currentuser')).user;
     console.log("---->> ", this.userDetails)
@@ -35,6 +36,9 @@ export class TicketCreationPage {
   }
 
   createTicket() {
+    let loading = this.loadingController.create({content : "Creating Ticket...."});
+    loading.present();
+
     var data = {
       "severity": this.ticket.severity,
       "priority": this.ticket.priority,
@@ -53,6 +57,7 @@ export class TicketCreationPage {
 
     this.ticketCreationService.create_tickets(data).subscribe((data) => {
       if(data.id) {
+        loading.dismissAll();
         this.presentAlert('Ticket created successfully!'+'<br>'+'Your Ticket ID:'+data.id); 
       }
     });

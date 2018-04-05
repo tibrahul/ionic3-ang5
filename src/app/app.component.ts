@@ -102,7 +102,9 @@ export class MyApp {
 		this.options.push({
 			iconName: 'log-out',
 			displayName: 'Logout',
-			component: HomePage
+			custom: {
+				isLogout: true
+			}
 		});
 	}
 
@@ -136,7 +138,22 @@ export class MyApp {
 		let alert = this.alertCtrl.create({
 			title: 'Information',
 			message: message,
-			buttons: ['Ok']
+			buttons: [
+				{
+					text: 'Cancel',
+					role: 'cancel',
+					handler: () => {
+						console.log('Cancel clicked');
+					}
+				},
+				{
+					text: 'OK',
+					handler: () => {
+						this.nav.setRoot(HomePage);
+						console.log('Buy clicked');
+					}
+				}
+			]
 		});
 		alert.present();
 	}
