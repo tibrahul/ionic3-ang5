@@ -53,7 +53,7 @@ export class TicketCreationPage {
 
     this.ticketCreationService.create_tickets(data).subscribe((data) => {
       if(data.id) {
-        this.presentAlert('Ticket created successfully!'); 
+        this.presentAlert('Ticket created successfully!'+'<br>'+'Your Ticket ID:'+data.id); 
       }
     });
   }

@@ -67,7 +67,7 @@ export class MyApp {
 			subItems: [
 				{
 					iconName: 'basket',
-					displayName: 'Dashnboard',
+					displayName: 'Dashboard',
 					component: TicketDashboardPage
 				},
 				{

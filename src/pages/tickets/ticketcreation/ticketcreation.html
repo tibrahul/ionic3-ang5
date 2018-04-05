@@ -31,7 +31,7 @@
   
       <ion-list>
             <ion-item>
-              <ion-label floating>Ticket Subject</ion-label>
+              <ion-label floating>Subject:</ion-label>
               <ion-input [(ngModel)]="ticket.subject" type="text"></ion-input>
             </ion-item>
 
@@ -46,11 +46,10 @@
             </ion-item>
 
             <ion-item>
-                <ion-label>Ticket Description</ion-label>
-              </ion-item>
-
-              <ck-editor name="editor1" [(ngModel)]="ticket.description" skin="moono-lisa" language="en" [fullPage]="false"></ck-editor>
-      </ion-list>
+                <ion-label>Description:</ion-label>
+                <ion-textarea [(ngModel)]="ticket.description" placeholder="Enter a description"></ion-textarea>
+            </ion-item>
+          </ion-list>
   </ion-card>
 
   <button ion-button color="blue" (click)="createTicket()" block>Create Ticket</button>
