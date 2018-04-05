@@ -80,4 +80,22 @@ export class TicketDashboardPage {
       id: id
     })
   }
+
+  doRefresh(refresher) {
+    var user = JSON.parse(localStorage.getItem('currentuser')).user;
+    var userRole = user[0].Authorities[0].role;
+    var uid = user[0].id;
+
+    if(userRole === "ROLE_USER") {
+      this.getTicketByUser(uid);
+    } else if(userRole === "ROLE_TM" ) {
+      this.getAssignedTicketByUser(uid);
+    } else {
+      this.getAllTickets();
+    }
+    setTimeout(() => {
+      refresher.complete();
+    }, 1500);
+  }
+
 }
