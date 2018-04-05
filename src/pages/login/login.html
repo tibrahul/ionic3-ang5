@@ -1,8 +1,7 @@
 <ion-content>
 
   <div padding [@flyInBottomFast]="cloudState" id="cloud-layer">
-    <ion-grid>
-
+    <div id="textFields">
     <ion-row>
       <ion-col>
           <img [@flyInBottomSlow]="logoState" src="assets/imgs/stahls.png" />
@@ -32,7 +31,7 @@
         <button (click)="afterlogin()" ion-button class="login-button" [@fadeIn]="loginState">Login</button>
       </ion-col>
     </ion-row>
-  </ion-grid>
+  </div>
   </div>
 
 </ion-content>

@@ -12,6 +12,7 @@
 <ion-content>
   <ion-list>
     <ion-item *ngFor="let ticket of allTickets">
+      <h3>{{ticket.id}}</h3>
       <h2>{{ticket.subject}}</h2>
       <p>{{ticket.status}} • {{ticket.timeofcreation | date: 'dd/MM/yyyy'}}</p>
       <button ion-button (click)="openTicket(ticket.id)" clear item-end>View</button>
