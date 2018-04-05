@@ -22,9 +22,18 @@ export class TicketDashboardPage {
 
     if(userRole === "ROLE_USER") {
       this.getTicketByUser(uid);
+    } else if(userRole === "ROLE_TM" ) {
+      this.getAssignedTicketByUser(uid);
     } else {
       this.getAllTickets();
     }
+  }
+
+  getAssignedTicketByUser(uid) {
+    this.ticketCreationService.get_assigned_ticket(uid).subscribe((data) => {
+      this.allTickets = data;
+      this.allTicketsToFilter = data;
+    });
   }
 
   getTicketByUser(uid) {

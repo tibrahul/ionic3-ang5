@@ -24,4 +24,8 @@ export class TicketCreationService {
         return this.apiService.get(this.SharedService.baseUrl + `/api/ticketsystem/getbyticketByid/`+id);
     }
 
+    get_assigned_ticket(uid): Observable<any> {
+        return this.apiService.get(this.SharedService.baseUrl + `/api/ticketsystem/getticketsByAssigntoId/`+uid);
+    }
+
 }
