@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController, MenuController } from 'ionic-angular';
+import { NavController, MenuController, AlertController } from 'ionic-angular';
 import { LoginPage } from '../../../pages/login/login';
 import { TicketCreationService } from '../../../shared';
 import { TicketDashboardPage } from '../ticketdashboard/ticketdashboard';
@@ -19,7 +19,12 @@ export class TicketCreationPage {
     subject: ''
   };
 
-  constructor(private menu: MenuController, public navCtrl: NavController, public ticketCreationService: TicketCreationService) {
+  constructor(
+    private menu: MenuController, 
+    private alertCtrl: AlertController, 
+    public navCtrl: NavController, 
+    public ticketCreationService: TicketCreationService
+  ) {
     this.userDetails = JSON.parse(localStorage.getItem('currentuser')).user;
     console.log("---->> ", this.userDetails)
   }
@@ -47,9 +52,34 @@ export class TicketCreationPage {
     }
 
     this.ticketCreationService.create_tickets(data).subscribe((data) => {
-      console.log("------>>> ", data);
-      this.navCtrl.push(TicketDashboardPage); 
+      if(data.id) {
+        this.presentAlert('Ticket created successfully!'); 
+      }
     });
   }
+
+  goToDashboard() {
+    this.navCtrl.push(TicketDashboardPage);
+  }
+
+  presentAlert(message: string): void { 
+    let alert = this.alertCtrl.create({ 
+      title: 'Information', 
+      message: message, 
+      buttons: [{
+        text: 'OK',
+        handler: data => {
+          this.ticket = {
+            priority: '',
+            severity: '',
+            status: '',
+            description: '',
+            subject: ''
+          }
+        }
+      }] 
+    });
+    alert.present(); 
+  } 
 
 }
