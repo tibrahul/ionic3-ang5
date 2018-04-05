@@ -71,6 +71,7 @@ export class TicketCreationPage {
     let alert = this.alertCtrl.create({ 
       title: 'Information', 
       message: message, 
+      enableBackdropDismiss: false,
       buttons: [{
         text: 'OK',
         handler: data => {

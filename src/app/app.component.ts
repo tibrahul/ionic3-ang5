@@ -138,6 +138,7 @@ export class MyApp {
 		let alert = this.alertCtrl.create({
 			title: 'Information',
 			message: message,
+			enableBackdropDismiss: false,
 			buttons: [
 				{
 					text: 'Cancel',
